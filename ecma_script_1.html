@@ -1,0 +1,310 @@
+<html>
+<head>
+<title>
+
+</title>
+<script>
+
+</script>
+<script>
+
+    function abc(){
+        console.log("hello");
+    }
+   // var x=abc()=>console.log("here");
+var colors=['red','yellow','orange','white'];
+console.log("Without Arrow functions");
+colors.forEach(function(color){
+console.log(color);
+});
+//using arrow function
+console.log("Arrow function");
+colors.forEach(x=>console.log(x.color));
+ 
+//adder function 
+console.log("Sum");
+var numbers=[1,2,3,4];
+ var sum=0;
+ function adder(number){
+     sum+=number;
+ }
+numbers.forEach(adder);
+console.log("adder"+sum);
+
+//map function
+var numbers =[1,2,3,4];
+var numberarray=[];
+var numberarrays=numbers.map(function(number){
+    return number*4;
+});
+console.log("map"+numberarrays);
+
+//json map function
+var cars=[{
+model:'car',price:5000
+},
+{
+model:'cars',price:6000
+}
+];
+
+var prices=cars.map(function(car){
+return car.price>5000;
+})
+console.log(prices);
+
+//filetrs
+var numbers=[1,2,3,4,5,6];
+
+var array=numbers.filter(function(number){
+return number>3;
+});
+console.log("filters"+array);
+
+//filetrs using json
+var jsonArrays=[
+    {id:1,name:'shreya'},
+    {id:2,name:'rima'},
+    {id:3,name:'riya'}
+];
+var nos=jsonArrays.filter(function(jsonArray){
+   return jsonArray.name==='shreya';
+});
+console.log("filters using json"+nos.name);
+
+
+var jsonStructs=[
+    {id:1,name:'rima',roll:23},
+    {id:2,name:'ria',roll:24},
+    {id:3,name:'riju',roll:25},
+]
+
+var jsonNo=jsonStructs.filter(function(jsonStruct){
+    return jsonStruct.id===1;
+});
+console.log("jsonNo filtered"+jsonNo.id);
+
+
+//find 
+var jsonFind=jsonStructs.find(function(jsonStruct){
+return jsonStruct.name==='rima';
+});
+console.log("find"+jsonFind.name);
+
+//find using car 
+
+function Car(model){
+this.model=model;
+}
+var carArrays=[
+    new Car('Zen'),
+    new Car('Brisk')
+]
+var arrayFind=carArrays.find(function(carArray){
+return carArray.model==='Zen';
+});
+   console.log("array find"+arrayFind.model); 
+
+//find using json arrays
+var arrays1=[
+    {
+    id:1,name:"Shreya"
+},
+{
+    id:2,name:"sayan"
+}
+];
+var arrays2=[{id:2}];
+
+var findArray=arrays1.find(function(array1){
+return arrays2.find(function(array2){
+    return array2.id===array1.id;
+})
+});
+
+console.log("array finding"+findArray.name);
+
+
+//every function
+var computers=[
+    {name:"comp1",ram:16},
+    {name:"comp2",ram:32},
+    {name:"comp3",ram:64}
+]
+var newComp=computers.every(function(computer){
+return computer.ram>32;
+});
+console.log("new computers"+newComp);
+
+//some function 
+var someComps=computers.some(function(computer){
+return computer.ram>32;
+});
+console.log("some computers"+someComps);
+
+//validations
+function Field(value){
+    this.value=value;
+}
+var username=new Field('username');
+var password=new Field('password');
+
+Field.prototype.validate=function(){
+return this.value.length>4;
+};
+username.validate();
+password.validate();
+
+var fields=[username,password];
+var formIsValid=fields.every(function(field){
+return field.validate();
+});
+console.log("validate"+formIsValid);
+if(formIsValid){
+    console.log("validation succesful!!")
+}
+else{
+    console.log("validation not succesful!!")
+}
+
+
+//reduce
+var reducedNos=[1,2,3,4,5,6];
+var sumup=0;
+var total=reducedNos.reduce(function(reducedNo,sumup){
+return sumup+reducedNo;
+},0);
+console.log("total Log"+total);
+
+
+//push object in array using reduce
+var reducedObjs=[{
+    name:'shreya',roll:4
+},
+{
+    name:'sayan',roll:5
+}];
+var arr=reducedObjs.reduce(function(newArray,reducedObj){
+    newArray.push(reducedObj);
+    return newArray;
+},[]);
+console.log("reduced array"+arr);
+
+
+//constant and let
+var x=10;
+console.log("var usage 1"+x);
+var x="shreya";
+console.log("var usage 2"+x);
+const name='jane';
+console.log("const usage 2"+name);
+let vary="software engineer";
+console.log("let usage"+vary);
+vary=10;
+console.log("let usage"+vary);
+
+
+//without template string
+
+function withoutTempString(){
+const time=new Date().getFullYear();
+return "the time is"+time;
+}
+console.log("check now:"+withoutTempString());
+//with temp string
+function TempString(){
+const time=new Date().getFullYear();
+return `the time is ${time}`;
+}
+console.log("check now:"+TempString());
+
+
+//without arrow functions
+const func1=function add(a,b){
+    return a+b;
+}
+console.log("addition"+func1(1,2));
+//with arrow function
+const funct2=(a,b)=>{return a+b};
+//with arrow functions
+const func3=(a,b)=>a+b;
+console.log("function 3"+func3(1,1));
+
+//replacing map function with arrow function
+var no1s=[1,2,3,4];
+const func4=(no)=>no+1;
+var newNoGen=no1s.map(func4);
+console.log(newNoGen);
+
+
+//members teamsummary
+const team={
+    teamName:'Super Squad',
+    members:['jane','rahul'],
+    teamSummary:function(){
+        var self=this;
+return this.members.map(function(member){
+return `the members are ${member} and ${self.teamName}`
+});
+    }
+};
+    console.log(team.teamSummary());
+
+//object literals
+var newObj=[
+    {price:5000,name:'shreya'},
+    {price:6000,name:'rima'},
+
+]
+
+function createAuthor(newObj){
+
+    return {
+     AuthorDetails:newObj,
+     Price:function prices(checkPrice){
+             return newObj.filter(function(newob){
+                 return newob.price===checkPrice;
+             });
+     }
+    }
+    }
+
+const author=createAuthor(newObj);
+console.log(author);
+console.log("price"+author.Price(6000));
+
+//
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</head>
+<body>
+</body>
+</html>

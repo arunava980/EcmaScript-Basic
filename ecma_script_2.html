@@ -1,0 +1,165 @@
+<html>
+<head>
+<title>
+
+</title>
+<script>
+
+</script>
+<script>
+
+//default paramters
+
+function makeAjaxRequest(url,method){
+if(!method){
+    method='GET'
+}
+return method;
+}
+console.log(makeAjaxRequest('google.com',undefined));
+console.log(makeAjaxRequest('google.com','POST'));
+
+//without rest operators
+function addNos(no1,no2,no3){
+    const arrs=[no1,no2,no3];
+    var sum=0;
+    var mainArr=[];
+    if(arrs.length>0){
+        mainArr=arrs.reduce(function(sum,arr){
+      return sum+arr;
+    },0);
+    }
+    return mainArr;
+}
+console.log(addNos(1,2,3));
+
+//rest operators
+function addNos(...numbers){
+    //const arrs=[no1,no2,no3];
+    var mainArr=[];
+    var sum=0;
+    if(numbers.length>0){
+        mainArr=numbers.reduce(function(sum,number){
+      return sum+number;
+    },0);
+    }
+    return mainArr;
+}
+console.log(addNos(1,2,3,4,5));
+
+//without destructuring 
+const file={
+id:1,
+size:'20 mb'
+};
+
+var id=file.id;
+var size=file.size;
+console.log(id);
+console.log(size);
+
+//with destructuring
+var {id}=file;
+var {size}=file;
+var {id,size}=file;
+console.log(id);
+console.log(size);
+
+//without destructuring
+function savedFiles(fileObj){
+return `The file name is ${fileObj.id}+${fileObj.size}`;
+}
+console.log(savedFiles(file));
+
+//with destructuring
+function savedFiles({id,size}){
+return `The file name is ${id}+${size}`;
+}
+console.log(savedFiles(file));
+
+//wirh desrructuring
+var arrays=[1,2,3,4,5];
+const [name,...names]=arrays;
+console.log(name);
+
+
+//without prototype
+// class Car{
+//     drive(){
+//         return 'vroom';
+//     }
+// }
+// const car=new Car();
+// console.log(car.drive());
+
+class Car{
+    constructor({title}){
+this.title=title;
+    }
+    drive(){
+        return 'vroom';
+    }
+}
+const car=new Car({title:'options'});
+console.log(car.drive());
+
+//inheritance
+class Toyota extends Car{
+constructor(options){
+    super(options);
+this.title=options.title;
+}
+honk(){
+    return 'honk';
+}
+}
+
+const toyota=new Toyota({title:'cars',id:1});
+console.log(toyota.honk());
+
+
+//generators
+function* numbers(){
+    yield;
+}
+const gen=numbers();
+console.log(gen.next());
+console.log(gen.next());
+
+//generators 
+function* numbers(){
+   const laund= yield 'laundry';
+   const cleanCloth= yield 'cleanclothes';
+   return [laun,cleanCloth];
+}
+const gen1=numbers();
+console.log(gen1.next());
+console.log(gen1.next('groceries'));
+
+//generators
+function* number(){
+    yield 'red';
+    yield 'blue';
+}
+const gens=number();
+console.log(gens.next());
+console.log(gens.next());
+
+//promise
+var promise=new Promise((resolve,reject)=>{
+//resolve();
+reject();
+});
+
+console.log(promise.then(()=>console.log('done')).catch(()=>console.log('failed')));
+
+
+
+
+
+</script>
+
+</head>
+<body>
+</body>
+</html>
